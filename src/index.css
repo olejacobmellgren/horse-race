@@ -25,3 +25,23 @@ button:hover {
 .text{
   display: none;
 }
+
+.horse-container {
+  display: flex;
+}
+
+.ButtonWrapper {
+  position: absolute;
+  bottom: 20px;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+.horse {
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  top: calc(100vh/2 - 240px/2);
+  transition: 3s;
+}
