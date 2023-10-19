@@ -7,6 +7,7 @@ import Bergen from './assets/Bergen.png';
 import Aas from './assets/Aas.png';
 import Spidermann from './assets/Spidermann.png';
 import error from './assets/error.png';
+import Confetti from 'react-confetti'
 
 function App() {
   interface HorseProps {
@@ -17,42 +18,59 @@ function App() {
 
   const [startVisible, setStartVisible] = useState(false);
   const [messageVisible, setMessageVisible] = useState(false);
-  const [onCompleteRemove, setOnCompleteRemove] = useState(false);
+  const [complete, setComplete] = useState(false);
   const [message, setMessage] = useState('');
   const [horses, setHorses] = useState<{ [id: string]: HorseProps }>({
-    "tor": {
+    "Tor": {
       imgPath: OkonomiTor,
-      style: { left: 'calc(1 * (100vw - 250px) / 5)', transition: '1s' },
-      id: 'tor'
+      style: { 
+        left: 'calc(1 * (100vw - 250px) / 5)', 
+        transition: '1s',
+        width: '15vw',
+        height: '15vw' },      
+      id: 'Tor'
     },
-    "bergen": {
+    "Bergen_Maskot": {
       imgPath: Bergen,
-      style: { left: 'calc(2 * (100vw - 250px) / 5)', transition: '1s' },
-      id: 'bergen'
+      style: { 
+        left: 'calc(2 * (100vw - 250px) / 5)', 
+        transition: '1s',
+        width: '15vw',
+        height: '15vw' },
+      id: 'Bergen_Maskot'
     },
-    "aas": {
+    "Aas_Maskot": {
       imgPath: Aas,
-      style: { left: 'calc(3 * (100vw - 250px) / 5)', transition: '1s' },
-      id: 'aas'
+      style: { 
+        left: 'calc(3 * (100vw - 250px) / 5)', 
+        transition: '1s',
+        width: '15vw',
+        height: '15vw' },      
+      id: 'Aas_Maskot'
     },
-    "spider": {
+    "Spiderman": {
       imgPath: Spidermann,
-      style: { left: 'calc(4 * (100vw - 250px) / 5)', transition: '1s' },
-      id: 'spider'
+      style: { 
+        left: 'calc(4 * (100vw - 250px) / 5)', 
+        transition: '1s',
+        width: '15vw',
+        height: '15vw' },      
+      id: 'Spiderman'
     }
   });
   const horseRef = useRef(horses)
   horseRef.current = horses
 
   const resetHorses = {
-    "tor": { ...horses.tor, style: { ...horses.tor.style, left: 'calc(1 * (100vw - 250px) / 5)', top: 'calc(100vh/2 - 240px/2)', transition: '1s' } },
-    "bergen": { ...horses.bergen, style: { ...horses.bergen.style, left: 'calc(2 * (100vw - 250px) / 5)', top: 'calc(100vh/2 - 240px/2)', transition: '1s' } },
-    "aas": { ...horses.aas, style: { ...horses.aas.style, left: 'calc(3 * (100vw - 250px) / 5)', top: 'calc(100vh/2 - 240px/2)', transition: '1s' } },
-    "spider": { ...horses.spider, style: { ...horses.spider.style, left: 'calc(4 * (100vw - 250px) / 5)', top: 'calc(100vh/2 - 240px/2)', transition: '1s' } }
+    "Tor": { ...horses.Tor, style: { ...horses.Tor.style, left: 'calc(1 * (100vw - 250px) / 5)', top: 'calc(100vh/2 - 240px/2)', transition: '1s' } },
+    "Bergen_Maskot": { ...horses.Bergen_Maskot, style: { ...horses.Bergen_Maskot.style, left: 'calc(2 * (100vw - 250px) / 5)', top: 'calc(100vh/2 - 240px/2)', transition: '1s' } },
+    "Aas_Maskot": { ...horses.Aas_Maskot, style: { ...horses.Aas_Maskot.style, left: 'calc(3 * (100vw - 250px) / 5)', top: 'calc(100vh/2 - 240px/2)', transition: '1s' } },
+    "Spiderman": { ...horses.Spiderman, style: { ...horses.Spiderman.style, left: 'calc(4 * (100vw - 250px) / 5)', top: 'calc(100vh/2 - 240px/2)', transition: '1s' } }
   }
 
   function handleStartVisible() {
-    setHorses(resetHorses)
+    setComplete(false);
+    setHorses(resetHorses);
     setStartVisible(!startVisible);
     setMessageVisible(false);
   }
@@ -71,10 +89,10 @@ function App() {
     //set horses to start position
     let currentX = [0, 0, 0, 0];
     const startHorses = {
-      "tor": { ...horses.tor, style: { ...horses.tor.style, left: currentX[0], top: '0vh' } },
-      "bergen": { ...horses.bergen, style: { ...horses.bergen.style, left: currentX[1], top: '20vh' } },
-      "aas": { ...horses.aas, style: { ...horses.aas.style, left: currentX[2], top: '40vh' } },
-      "spider": { ...horses.spider, style: { ...horses.spider.style, left: currentX[3], top: '60vh' } }
+      "Tor": { ...horses.Tor, imgPath: OkonomiTor, style: { ...horses.Tor.style, left: currentX[0], top: '0vh' } },
+      "Bergen_Maskot": { ...horses.Bergen_Maskot, imgPath: Bergen, style: { ...horses.Bergen_Maskot.style, left: currentX[1], top: '20vh' } },
+      "Aas_Maskot": { ...horses.Aas_Maskot,  imgPath: Aas, style: { ...horses.Aas_Maskot.style, left: currentX[2], top: '40vh' } },
+      "Spiderman": { ...horses.Spiderman, imgPath: Spidermann, style:  { ...horses.Spiderman.style, left: currentX[3], top: '60vh' } }
     }
 
 
@@ -95,13 +113,13 @@ function App() {
         if (randomRestart === 0) {
           test[randomHorse] = { ...test[randomHorse], 
             imgPath: error,
-            style: { ...test[randomHorse].style, left: (0 + 'vw') , transition: (0.5).toString() + 's'} }
+            style: { ...test[randomHorse].style, left: (0 + 'vw') , width: '10vw', height: '10vw', transition: (0.5).toString() + 's'} }
           currentX[randomHorseIndex] = 0;
           handleMessageVisible(randomHorse, "error")
         } else {
           test[randomHorse] = { ...test[randomHorse], 
             imgPath: horses[randomHorse].imgPath,
-            style: { ...test[randomHorse].style, left: (currentX[randomHorseIndex].toString() + 'vw') , transition: (randomSpeed).toString() + 's'} }
+            style: { ...test[randomHorse].style, left: (currentX[randomHorseIndex].toString() + 'vw') , width: '15vw', height: '15vw', transition: (randomSpeed).toString() + 's'} }
         }
         setHorses(test)
         horseRef.current = test
@@ -109,7 +127,8 @@ function App() {
           moveHorse()
         } 
         else {
-          setOnCompleteRemove(true);
+
+          setComplete(true);
           handleMessageVisible(randomHorse, "finish");
         }
       }, 800); // Adjust the delay as needed (in milliseconds)
@@ -120,6 +139,9 @@ function App() {
 
   return (
     <>
+      {complete ? (
+        <Confetti />
+      ): null}
       <div className="horse-container">
         {Object.values(horses).map((horse) => (<Horse id={horse.id} imgPath={horse.imgPath} style={horse.style} />))}
       </div>
@@ -133,11 +155,11 @@ function App() {
         </h1>
       )}
       {messageVisible && (
-        <h1 id="error">
+        <h1 id="comment">
           <ReactTyped
             strings={[message]}
-            typeSpeed={70}
-            onComplete={() => setMessageVisible(onCompleteRemove)}
+            typeSpeed={40}
+            onComplete={() => setMessageVisible(complete)}
           />
         </h1>
       )}
@@ -146,6 +168,10 @@ function App() {
           Start race
         </button>
       </div>
+      <div>
+        |
+      </div>
+    
     </>
   )
 }

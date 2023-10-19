@@ -41,8 +41,6 @@ button:hover {
 
 .horse {
   position: absolute;
-  width: 15vw;
-  height: 15vw;
   top: calc(100vh/2 - 240px/2);
   z-index: -1;
 }
