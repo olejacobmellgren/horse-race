@@ -1,4 +1,4 @@
-import { CSSProperties, useEffect, useState } from "react";
+import { CSSProperties } from "react";
 interface HorseProps{
   imgPath: string;
   style: CSSProperties;
