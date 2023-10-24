@@ -18,7 +18,7 @@ function App() {
 
   const [startVisible, setStartVisible] = useState(false);
   const [messageVisible, setMessageVisible] = useState(false);
-  const [complete, setComplete] = useState(false);
+  const [complete, setComplete] = useState(true);
   const [message, setMessage] = useState('');
   const [horses, setHorses] = useState<{ [id: string]: HorseProps }>({
     "Tor": {
