@@ -158,18 +158,17 @@ function App() {
         <h1 id="comment">
           <ReactTyped
             strings={[message]}
-            typeSpeed={60}
+            typeSpeed={80}
             onComplete={() => setMessageVisible(complete)}
           />
         </h1>
       )}
       <div className="button-wrapper">
-        <button onClick={handleStartVisible}>
-          Start race
-        </button>
-      </div>
-      <div>
-        |
+        {complete ? (
+          <button onClick={handleStartVisible}>
+            Start race
+          </button>
+        ): null}
       </div>
     
     </>
