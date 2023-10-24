@@ -148,7 +148,7 @@ function App() {
       {startVisible && (
         <h1>
           <ReactTyped
-            strings={["GAME INITIATED", "STARTING IN", "5", "4", "3", "2", "1", "GO!"]}
+            strings={["GAME INITIATED", "STARTING IN:", "5", "4", "3", "2", "1", "GO!"]}
             typeSpeed={40}
             onComplete={handleStart}
           />
@@ -158,7 +158,7 @@ function App() {
         <h1 id="comment">
           <ReactTyped
             strings={[message]}
-            typeSpeed={40}
+            typeSpeed={20}
             onComplete={() => setMessageVisible(complete)}
           />
         </h1>
