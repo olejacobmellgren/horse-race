@@ -158,7 +158,7 @@ function App() {
         <h1 id="comment">
           <ReactTyped
             strings={[message]}
-            typeSpeed={20}
+            typeSpeed={60}
             onComplete={() => setMessageVisible(complete)}
           />
         </h1>
