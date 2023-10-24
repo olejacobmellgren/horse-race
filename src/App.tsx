@@ -106,7 +106,7 @@ function App() {
       const randomHorseIndex = Math.floor(Math.random() * 4);
       const randomSpeed = Math.random() * 5 + 1;
       const randomHorse = Object.keys(horses)[randomHorseIndex];
-      const randomRestart = Math.floor(Math.random() * 20);
+      const randomRestart = Math.floor(Math.random() * 15);
       currentX[randomHorseIndex] += 7;
       setTimeout(() => {
         const test = { ...horseRef.current }
@@ -148,7 +148,7 @@ function App() {
       {startVisible && (
         <h1>
           <ReactTyped
-            strings={["GAME INITIATED STARTING IN:", "5", "4", "3", "2", "1", "GO!"]}
+            strings={["GAME INITIATED", "STARTING IN", "5", "4", "3", "2", "1", "GO!"]}
             typeSpeed={40}
             onComplete={handleStart}
           />
