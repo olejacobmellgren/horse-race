@@ -7,11 +7,11 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/HorseRace" element={<Race />} />
-        <Route path="/HorseRace/tor" element={<ButtonPage horse="Tor"/>} />
-        <Route path="/HorseRace/bergen" element={<ButtonPage horse="Bergen"/>} />
-        <Route path="/HorseRace/aas" element={<ButtonPage horse="Aas"/>} />
-        <Route path="/HorseRace/spiderman" element={<ButtonPage horse="Spiderman"/>} />
+        <Route path="/" element={<Race />} />
+        <Route path="tor" element={<ButtonPage horse="Tor"/>} />
+        <Route path="bergen" element={<ButtonPage horse="Bergen"/>} />
+        <Route path="aas" element={<ButtonPage horse="Aas"/>} />
+        <Route path="spiderman" element={<ButtonPage horse="Spiderman"/>} />
       </Routes>
     </>
   )

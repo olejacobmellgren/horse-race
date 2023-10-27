@@ -1,5 +1,3 @@
-import react from 'react';
-
 const ButtonPage = ({horse}: {horse: string}) => {
   return (
     <div className="body">
