@@ -30,16 +30,26 @@ button:active {
 }
 
 .go-button {
-  font-size: 6vh;
-  border-color: rgb(0, 255, 0);
+  padding: 2vh 4vw;
+  font-size: 10vw;
+  border: 2px solid rgb(0, 255, 0);
+  z-index: 999;
+  background-color: black;
 }
 
-.body {
+button:active {
+  background-color: green;
+  color: black;
+  border-color: black;
+}
+
+.button-body {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   position: relative;
+
 }
 
 .text{
